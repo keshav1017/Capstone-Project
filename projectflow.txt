@@ -1,0 +1,9 @@
+-------------------------------------- Setting up projct structure -------------------------------------
+
+1. Create repo, clone it in local
+2. Create a virtual environment name "atlas" - conda create -n atlas
+3. Activate the virtual environment
+4. pip install cookiecutter
+5. cookiecutter -c v1 https://github.com/drivendata/cookiecutter-data-science
+6. Rename src.models -> src.model
+7. git add - commit - push  
