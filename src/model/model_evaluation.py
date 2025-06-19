@@ -18,10 +18,27 @@ warnings.simplefilter("ignore", UserWarning)
 warnings.filterwarnings("ignore")
 logging.getLogger("urllib3").setLevel(logging.ERROR)
 
+# Below is the code for production use
+# -------------------------------------------------------------------------------------
+# Set up DagsHub credentials for MLflow tracking
+dagshub_token = os.getenv("CAPSTONE_TEST")
+if not dagshub_token:
+    raise EnvironmentError("CAPSTONE_TEST environment variable is not set")
+
+os.environ["MLFLOW_TRACKING_USERNAME"] = dagshub_token
+os.environ["MLFLOW_TRACKING_PASSWORD"] = dagshub_token
+
+dagshub_url = "https://dagshub.com"
+repo_owner = "keshav1017"
+repo_name = "Capstone-Project"
+
+# Set up MLflow tracking URI
+mlflow.set_tracking_uri(f'{dagshub_url}/{repo_owner}/{repo_name}.mlflow')
+
 # Below is the code for local use
 
-mlflow.set_tracking_uri('https://dagshub.com/keshav1017/Capstone-Project.mlflow')
-dagshub.init(repo_owner='keshav1017', repo_name='Capstone-Project', mlflow=True)
+# mlflow.set_tracking_uri('https://dagshub.com/keshav1017/Capstone-Project.mlflow')
+# dagshub.init(repo_owner='keshav1017', repo_name='Capstone-Project', mlflow=True)
 
 def load_model(file_path: str) -> LogisticRegression:
     try:
