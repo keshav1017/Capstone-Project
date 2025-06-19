@@ -32,3 +32,14 @@
     - model_building.py
     - model_evaluation.py
     - register_model.py
+18. add file - dvc.yaml 
+19. add file - params.yaml
+20. DVC pipeline is ready to run - dvc repro
+21. Once do - dvc status
+22. git add - commit - push
+
+23. Need to add S3 as remote storage - Create IAM User (keep cred) and S3 bucket.
+24. pip install dvc[s3] awscli
+25. Checking/deleting dvc remote (optional) - dvc remote list & dvc remove <name>.
+26. Set aws cred - aws configure
+27. Add S3 as dvc remote storage - dvc add remote -d myremote s3://<bucket_name>.
