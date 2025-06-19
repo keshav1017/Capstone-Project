@@ -58,7 +58,7 @@ class TestModelLoading(unittest.TestCase):
         self.assertEqual(input_df.shape[1], len(self.vectorizer.get_feature_names_out()))
 
         # verify the output shape (assuming binary classfication with single output)
-        self.assertEqual(len(prediction), len(input_df.shape[0]))
+        self.assertEqual(len(prediction), input_df.shape[0])
         self.assertEqual(len(prediction.shape), 1) # assuming a single ouput column for binary classfication
 
     def test_model_performance(self):
