@@ -45,42 +45,18 @@ Welcome to my end-to-end **MLOps Capstone Project** — a production-ready machi
 ## 🛠️ **Project Workflow**
 
 ```mermaid
-flowchart TD
-  subgraph DATA_PIPELINE [Data Pipeline]
-    A[📥 Data Ingestion]
-    B[🧹 Data Preprocessing]
-    C[⚙️ Feature Engineering]
-  end
+flowchart LR
+  INGEST["📥 Data Ingestion"]
+  PREP["🧹 Preprocessing + Feature Engg"]
+  MODEL["🤖 Train + Track (MLflow)"]
+  VERSION["📦 DVC + S3"]
+  DOCKER["🐳 Docker + ECR"]
+  K8S["🧬 Deploy on EKS"]
+  MON["📈 Monitor: Prometheus + Grafana"]
 
-  subgraph MODELING [Modeling + Experiment Tracking]
-    D[🤖 Model Training]
-    E[📊 MLflow Tracking]
-  end
-
-  subgraph VERSIONING [Artifact & Data Versioning]
-    F[DVC Pipeline]
-    G[S3 Artifact Storage]
-  end
-
-  subgraph DEPLOYMENT [Deployment]
-    H[🐳 Docker Build + ECR Push]
-    I[K8s Deployment on EKS]
-  end
-
-  subgraph MONITORING [Monitoring]
-    J[📈 Prometheus]
-    K[📊 Grafana]
-  end
-
-  %% Connections
-  A --> B --> C --> D
-  D --> E
-  D --> F
-  F --> G
-  G --> H
-  H --> I
-  I --> J
-  J --> K
+  INGEST --> PREP --> MODEL
+  MODEL --> VERSION
+  MODEL --> DOCKER --> K8S --> MON
 ```
 
 ---
@@ -234,4 +210,4 @@ kubectl apply -f k8s/deployment.yaml
 
 ## 📫 **Let’s Connect**
 
-💼 [LinkedIn](https://www.linkedin.com/in/keshav1017)
+💼 [LinkedIn](https://www.linkedin.com/in/keshavprasad1017/)
