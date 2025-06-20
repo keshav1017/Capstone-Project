@@ -45,18 +45,30 @@ Welcome to my end-to-end **MLOps Capstone Project** — a production-ready machi
 ## 🛠️ **Project Workflow**
 
 ```mermaid
-flowchart LR
-  INGEST["📥 Data Ingestion"]
-  PREP["🧹 Preprocessing + Feature Engg"]
-  MODEL["🤖 Train + Track (MLflow)"]
-  VERSION["📦 DVC + S3"]
-  DOCKER["🐳 Docker + ECR"]
-  K8S["🧬 Deploy on EKS"]
-  MON["📈 Monitor: Prometheus + Grafana"]
+flowchart TB
+  CENTER["🚀 MLOps Lifecycle"]
 
-  INGEST --> PREP --> MODEL
+  %% Data Pipeline
+  INGEST["📥 Ingest Data"]
+  PREP["🧹 Preprocess + Feature Engg"]
+  MODEL["🤖 Train + Track - MLflow"]
+  VERSION["📦 DVC + S3"]
+
+  %% Deployment
+  DOCKER["🐳 Docker + ECR"]
+  K8S["🧬 EKS Deployment"]
+
+  %% Monitoring
+  MON["📈 Prometheus + Grafana"]
+
+  %% Connections
+  CENTER --> INGEST
+  INGEST --> PREP
+  PREP --> MODEL
   MODEL --> VERSION
-  MODEL --> DOCKER --> K8S --> MON
+  MODEL --> DOCKER
+  DOCKER --> K8S
+  K8S --> MON
 ```
 
 ---
