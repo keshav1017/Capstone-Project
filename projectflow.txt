@@ -190,9 +190,6 @@ This should return the full path to the prometheus binary, such as /usr/local/bi
 57. Run Prometheus with the config file:
 /usr/local/bin/prometheus --config.file=/etc/prometheus/prometheus.yml
 
-
-
-
 >>>>>>>>>> Grafana Server Setup <<<<<<<<<<
 
 58. Launch an Ubuntu EC2 Instance for Grafana: t3.medium,  20GB of disk space (general-purpose SSD), Security Group: Allow inbound access on ports: 3000 for Grafana Web UI, 22 for SSH access
