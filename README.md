@@ -46,13 +46,41 @@ Welcome to my end-to-end **MLOps Capstone Project** — a production-ready machi
 
 ```mermaid
 flowchart TD
-  A[Data Ingestion] --> B[Data Preprocessing]
-  B --> C[Feature Engineering]
-  C --> D[Model Training + MLflow Tracking]
-  D --> E[DVC Pipeline + S3 Artifact Storage]
-  E --> F[Docker Image Build + ECR Push]
-  F --> G[Kubernetes Deployment on EKS]
-  G --> H[Prometheus + Grafana Monitoring]
+  subgraph DATA_PIPELINE [Data Pipeline]
+    A[📥 Data Ingestion]
+    B[🧹 Data Preprocessing]
+    C[⚙️ Feature Engineering]
+  end
+
+  subgraph MODELING [Modeling + Experiment Tracking]
+    D[🤖 Model Training]
+    E[📊 MLflow Tracking]
+  end
+
+  subgraph VERSIONING [Artifact & Data Versioning]
+    F[DVC Pipeline]
+    G[S3 Artifact Storage]
+  end
+
+  subgraph DEPLOYMENT [Deployment]
+    H[🐳 Docker Build + ECR Push]
+    I[K8s Deployment on EKS]
+  end
+
+  subgraph MONITORING [Monitoring]
+    J[📈 Prometheus]
+    K[📊 Grafana]
+  end
+
+  %% Connections
+  A --> B --> C --> D
+  D --> E
+  D --> F
+  F --> G
+  G --> H
+  H --> I
+  I --> J
+  J --> K
 ```
 
 ---
